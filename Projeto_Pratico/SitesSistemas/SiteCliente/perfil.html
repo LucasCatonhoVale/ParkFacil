@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" tipo="imagem/png" href="../SiteCliente/img/logoremov.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../SiteCliente/css/perfil.css">
+        <link rel="stylesheet" href="../SiteCliente/css/menu.css">
+
+    <title>Parkifacil</title>
+</head>
+<body>
+    <header>
+        <!--logo-->
+        <div id="logo">
+            <img id="ImgLogo" src="../SiteCliente/img/logo.png" alt="Logo Principal">
+        </div>..
+        <!--NAV= Menu-->
+        <div id="menu">
+            <nav>
+                <li><a href="../SiteCliente/index.html">Inicio</a></li>
+                <li><a href="#funciona">Como Funciona</a></li>
+                <li><a href="./buscar.html">Estacionamentos</a></li>
+                <li><a href="../SiteCliente/agendamentos.html">Meus Agendamentos</a></li>
+                <li><a href="../SiteCliente/loging.html">Login</a></li>
+                <li id="sla"><a href="../SiteCliente/cadastro.html" style="color: aliceblue; margin-left: 15px;">Cadastrar</a></li>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div id="titulo">
+            <img src="../SiteCliente/img/bonecoSeco.png" alt="icone">
+            <h1>Meu Perfil</h1>
+            <h3>Gerencie suas informações, preferencias e acompanhe suas atividades no ParkFacil</h3>
+        </div>
+
+        <section><div id="Dados"></div></section>
+        <section><div id="conteudo"></div></section>
+        <section><div id="carros"></div></section>
+    </main>
+
+    <!-- MODAL EDITAR PERFIL -->
+    <div class="modal-perfil" id="modalEditarPerfil">
+        <div class="modal-perfil-conteudo">
+
+            <button type="button" class="fechar-modal" data-fechar="modalEditarPerfil">&times;</button>
+
+            <h2>Editar Perfil</h2>
+            <p>Atualize suas informações pessoais.</p>
+
+            <form id="formEditarPerfil">
+
+                <div class="foto-modal">
+                    <img id="previewImagem" src="../SiteCliente/img/usuario.png" alt="Foto do usuário">
+
+                    <label for="imagemPerfil">Adicionar / Trocar imagem</label>
+                    <input type="file" id="imagemPerfil" accept="image/png,image/jpeg,image/webp">
+                </div>
+
+                <label for="nomeUsuario">Nome</label>
+                <input type="text" id="nomeUsuario" required>
+
+                <label for="emailUsuario">E-mail</label>
+                <input type="email" id="emailUsuario" required>
+
+                <label for="telefoneUsuario">Telefone</label>
+                <input type="tel" id="telefoneUsuario" required>
+
+                <div class="acoes-modal">
+                    <button type="button" data-fechar="modalEditarPerfil">Cancelar</button>
+                    <button type="submit">Salvar alterações</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL TROCAR SENHA -->
+    <div class="modal-perfil" id="modalTrocarSenha">
+        <div class="modal-perfil-conteudo">
+
+            <button type="button" class="fechar-modal" data-fechar="modalTrocarSenha">&times;</button>
+
+            <h2>Trocar Senha</h2>
+            <p>Informe sua senha atual e cadastre uma nova.</p>
+
+            <form id="formTrocarSenha">
+
+                <label for="senhaAtual">Senha atual</label>
+                <input type="password" id="senhaAtual" required>
+
+                <label for="novaSenha">Nova senha</label>
+                <input type="password" id="novaSenha" minlength="6" required>
+
+                <label for="confirmarSenha">Confirmar nova senha</label>
+                <input type="password" id="confirmarSenha" minlength="6" required>
+
+                <div class="acoes-modal">
+                    <button type="button" data-fechar="modalTrocarSenha">Cancelar</button>
+                    <button type="submit">Alterar senha</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="lgfinal">
+            <img src="../SiteCliente/img/logo.png" alt="logo">
+            <h1>Encontre, reserve e estacione com <br> praticidade e segurança.</h1>
+        </div>
+
+        <div id="menu">
+            <nav>
+                <li><a href="#menu">Inicio</a></li>
+                <li><a href="">Como Funciona</a></li>
+                <li><a href="#">Estacionamentos</a></li>
+                <li><a href="">Meus Agendamentos</a></li>
+                <li><a href="../SiteCliente/loging.html">Login</a></li>
+                <li id="sla"><a href="" style="color: aliceblue; margin-left: 15px;">Cadastrar</a></li>
+            </nav>
+        </div>
+
+        <p>&copy; ParkFacil. Todos os direitos reservados.</p>
+    </footer>
+    <div id="alerta" class="alerta">
+            <p id="mensagemAlerta"></p>
+    </div>
+    <script src="../SiteCliente/js/perfil.js"></script>
+    <script src="../SiteCliente/js/menu.js"></script>
+</body>
+</html>

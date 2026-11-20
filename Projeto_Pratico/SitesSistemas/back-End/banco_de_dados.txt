@@ -1,0 +1,204 @@
+
+CREATE DATABASE IF NOT EXISTS ParkFacil;
+
+USE ParkFacil;
+
+
+-- =========================================
+-- TABELA: USUARIO
+-- =========================================
+
+CREATE TABLE Usuario (
+    Id_Usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    NmUsuario VARCHAR(35) NOT NULL,
+    SobreNome VARCHAR(100) NOT NULL,
+    Cpf CHAR(11) NOT NULL UNIQUE,
+    Telefone VARCHAR(15) NOT NULL,
+    Email VARCHAR(150) NOT NULL UNIQUE,
+    Senha VARCHAR(255) NOT NULL,
+    Imagem mediumtext 
+);
+
+
+-- =========================================
+-- TABELA: ESTACIONAMENTO
+-- =========================================
+
+CREATE TABLE Estacionamento (
+    Id_Estacionamento integer NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    NmEstacionamento  VARCHAR(100) NOT NULL,
+    Cnpj              CHAR(14) NOT NULL UNIQUE,
+    QtVagas           int UNSIGNED NOT NULL,
+    Telefone           VARCHAR(15) NOT NULL,
+    Email               VARCHAR(150) NOT NULL UNIQUE,
+    ValorHora           DECIMAL(10,2) NOT NULL,
+    Descricao           TEXT,
+    Endereco          VARCHAR(200) NOT NULL,
+    Numero               VARCHAR(10) NOT NULL,
+    Complemento       VARCHAR(100),
+    Bairro               VARCHAR(100) NOT NULL,
+    Cidade              VARCHAR(100) NOT NULL,
+    Estado               CHAR(2) NOT NULL,
+    Cep               CHAR(8) NOT NULL,
+    HorarioAbertura   TIME NOT NULL,
+    HorarioFechamento TIME NOT NULL,
+);
+
+-- =========================================
+-- TABELA: CARRO
+-- =========================================
+
+CREATE TABLE Carro (
+    Id_Carro   integer NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Marca      VARCHAR(50) NOT NULL,
+    Modelo     VARCHAR(100) NOT NULL,
+    Placa      VARCHAR(7) NOT NULL UNIQUE,
+    Cor        VARCHAR(30) NOT NULL,
+    Tipo       VARCHAR(50) NOT NULL,
+    Id_Usuario integer NOT NULL,
+    CONSTRAINT FK_Carro_Usuario FOREIGN KEY (Id_Usuario)REFERENCES Usuario(Id_Usuario)
+);
+
+
+-- =========================================
+-- TABELA: RESERVA
+-- =========================================
+
+CREATE TABLE Reserva (
+    Id_Reserva           integer NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    DataHoraReserva      DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    DataHoraChegada      DATETIME NOT NULL,
+    DataHoraSaida        DATETIME NOT NULL,
+    StatusReserva        VARCHAR(30) NOT NULL DEFAULT 'PENDENTE',
+    ValorTotal              DECIMAL(10,2) NOT NULL,
+    Id_Carro              integer NOT NULL,
+    Id_Estacionamento      integer NOT NULL,
+    Id_Usuario             integer NOT NULL,
+    CONSTRAINT FK_Reserva_Carro FOREIGN KEY (Id_Carro)REFERENCES Carro(Id_Carro),
+    CONSTRAINT FK_Reserva_Estacionamento FOREIGN KEY (Id_Estacionamento)REFERENCES Estacionamento(Id_Estacionamento),
+    CONSTRAINT FK_Reserva_Usuario FOREIGN KEY (Id_Usuario) REFERENCES Usuario(Id_Usuario)
+);
+-- =========================================
+-- TABELA: IMAGEMESTACIONAMENTO
+-- =========================================
+
+CREATE TABLE ImagemEstacionamento (
+    Id_Imagem 		 integer NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    CaminhoImagem    mediumtext NOT NULL,
+    ImagemPrincipal  mediumtext NOT NULL ,
+    Id_Estacionamento integer NOT NULL,
+    CONSTRAINT FK_Imagem_Estacionamento FOREIGN KEY (Id_Estacionamento)REFERENCES Estacionamento(Id_Estacionamento)
+);
+
+inserts
+
+insert into Estacionamento
+(NmEstacionamento, Cnpj, QtVagas, Telefone, Email, ValorHora, Descricao, Endereco, Numero, Complemento, Bairro, Cidade, Estado, Cep, HorarioAbertura, HorarioFechamento)
+values
+('Estacionamento Central', '11222333000181', 200, '(11) 91234-5678', 'contato@estacionamentocentral.com', 12.00, 'Estacionamento coberto, seguro e bem localizado no centro da cidade.', 'Rua das Flores', '123', null, 'Centro', 'São Paulo', 'SP', '01001000', '00:00:00', '24:00:00'),
+('Park Paulista', '12345678000190', 150, '(11) 92345-6789', 'contato@parkpaulista.com.br', 15.00, 'Ponto estratégico na Avenida Paulista, ideal para quem vai a escritórios e eventos.', 'Av. Paulista', '1500', null, 'Bela Vista', 'São Paulo', 'SP', '01310100', '06:00:00', '23:00:00'),
+('Vaga Certa Vila Mariana', '23456789000101', 80, '(11) 93456-7890', 'contato@vagacerta.com.br', 10.00, 'Estacionamento tranquilo, próximo ao metrô e a restaurantes da Vila Mariana.', 'Rua Domingos de Morais', '800', null, 'Vila Mariana', 'São Paulo', 'SP', '04010100', '07:00:00', '22:00:00'),
+('Garagem Pinheiros', '34567890000112', 120, '(11) 94567-8901', 'contato@garagempinheiros.com.br', 14.00, 'Garagem com vigilância e funcionamento até a meia-noite, perto de bares e shows.', 'Rua dos Pinheiros', '450', null, 'Pinheiros', 'São Paulo', 'SP', '05422001', '06:00:00', '24:00:00'),
+('Park Liberdade', '45678901000123', 60, '(11) 95678-9012', 'contato@parkliberdade.com.br', 9.00, 'Pequeno estacionamento a poucos passos da estação Liberdade.', 'Rua da Glória', '300', null, 'Liberdade', 'São Paulo', 'SP', '01510000', '08:00:00', '20:00:00'),
+('Estacionamento Brás Seguro', '56789012000134', 250, '(11) 96789-0123', 'contato@brasseguro.com.br', 8.00, 'Grande capacidade e preço baixo, ótimo para quem faz compras na região do Brás.', 'Rua do Brás', '95', null, 'Brás', 'São Paulo', 'SP', '03016000', '05:00:00', '23:00:00'),
+('Mooca Park', '67890123000145', 90, '(11) 97890-1234', 'contato@moocapark.com.br', 7.50, 'Estacionamento de bairro com atendimento rápido e vagas amplas.', 'Rua da Mooca', '1200', null, 'Mooca', 'São Paulo', 'SP', '03103001', '06:00:00', '22:00:00'),
+('Itaim Parking', '78901234000156', 180, '(11) 98901-2345', 'contato@itaimparking.com.br', 18.00, 'Estacionamento coberto no Itaim Bibi, aberto 24 horas, com câmeras em todos os andares.', 'Rua Joaquim Floriano', '700', null, 'Itaim Bibi', 'São Paulo', 'SP', '04534002', '00:00:00', '24:00:00'),
+('Tatuapé Vagas', '89012345000167', 140, '(11) 99012-3456', 'contato@tatuapevagas.com.br', 9.50, 'Vagas próximas ao metrô Tatuapé, com acesso fácil pela avenida.', 'Rua Tuiuti', '600', null, 'Tatuapé', 'São Paulo', 'SP', '03081000', '06:00:00', '23:00:00'),
+('Santana Park', '90123456000178', 100, '(11) 91123-4567', 'contato@santanapark.com.br', 8.50, 'Estacionamento na Zona Norte, perto do terminal Santana.', 'Av. Cruzeiro do Sul', '1800', null, 'Santana', 'São Paulo', 'SP', '02030000', '06:00:00', '22:00:00'),
+('Lapa Garagem', '01234567000189', 70, '(11) 92234-5678', 'contato@lapagaragem.com.br', 8.00, 'Garagem simples e segura, a uma quadra da estação Lapa.', 'Rua Clélia', '350', null, 'Lapa', 'São Paulo', 'SP', '05042000', '07:00:00', '21:00:00'),
+('Consolação Park', '11345678000190', 110, '(11) 93345-6789', 'contato@consolacaopark.com.br', 13.00, 'Funciona 24 horas, bem localizado entre a Paulista e o Centro.', 'Rua da Consolação', '2000', null, 'Consolação', 'São Paulo', 'SP', '01302001', '00:00:00', '24:00:00'),
+('Ipiranga Estaciona', '22456789000101', 85, '(11) 94456-7890', 'contato@ipirangaestaciona.com.br', 7.00, 'Estacionamento econômico próximo a museus e ao Parque da Independência.', 'Av. Nazaré', '500', null, 'Ipiranga', 'São Paulo', 'SP', '04262000', '06:00:00', '22:00:00'),
+('Morumbi Premium Park', '33567890000112', 300, '(11) 95567-8901', 'contato@morumbipremium.com.br', 20.00, 'Estacionamento amplo e coberto, com manobrista, perto do estádio e do shopping.', 'Av. Giovanni Gronchi', '5000', null, 'Morumbi', 'São Paulo', 'SP', '05724002', '06:00:00', '24:00:00'),
+('Butantã Vagas', '44678901000123', 95, '(11) 96678-9012', 'contato@butantavagas.com.br', 7.50, 'Ideal para quem estuda ou trabalha na região da USP.', 'Av. Vital Brasil', '900', null, 'Butantã', 'São Paulo', 'SP', '05503001', '06:00:00', '22:00:00'),
+('Santo Amaro Park', '55789012000134', 220, '(11) 97789-0123', 'contato@santoamaropark.com.br', 10.00, 'Grande estacionamento na região comercial de Santo Amaro, perto do terminal.', 'Av. Adolfo Pinheiro', '1000', null, 'Santo Amaro', 'São Paulo', 'SP', '04733100', '05:00:00', '23:00:00'),
+('Barra Funda Garagem', '66890123000145', 130, '(11) 98890-1234', 'contato@barrafundagaragem.com.br', 9.00, 'Perto do terminal Barra Funda e de casas de show.', 'Rua Brigadeiro Galvão', '400', null, 'Barra Funda', 'São Paulo', 'SP', '01151000', '06:00:00', '23:00:00'),
+('Vila Madalena Park', '77901234000156', 50, '(11) 99901-2345', 'contato@vilamadalenapark.com.br', 12.00, 'Estacionamento pequeno no coração da Vila Madalena, aberto até a meia-noite.', 'Rua Fradique Coutinho', '650', null, 'Vila Madalena', 'São Paulo', 'SP', '05416011', '08:00:00', '24:00:00'),
+('Jabaquara Estacionamento', '88012345000167', 160, '(11) 91012-3456', 'contato@jabaquaraestacionamento.com.br', 6.50, 'Preço baixo e vagas de sobra, ao lado do terminal Jabaquara.', 'Av. Jabaquara', '2200', null, 'Jabaquara', 'São Paulo', 'SP', '04045004', '05:00:00', '22:00:00'),
+('Penha Park', '99123456000178', 75, '(11) 92123-4567', 'contato@penhapark.com.br', 6.00, 'Estacionamento de bairro, perto da Igreja da Penha e do metrô.', 'Rua Penha de França', '700', null, 'Penha', 'São Paulo', 'SP', '03633000', '06:00:00', '21:00:00');
+
+
+-- Se você já rodou o insert anterior das imagens, limpe antes:
+-- truncate table ImagemEstacionamento;
+
+insert into ImagemEstacionamento (CaminhoImagem, ImagemPrincipal, Id_Estacionamento)
+values
+-- 1 Estacionamento Central
+('https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?q=80&w=1200&auto=format&fit=crop', 'https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?q=80&w=1200&auto=format&fit=crop', 1),
+('https://images.unsplash.com/photo-1621929747188-0b4dc28498d2?q=80&w=1200&auto=format&fit=crop', 'https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?q=80&w=1200&auto=format&fit=crop', 1),
+('https://images.unsplash.com/photo-1506521781263-d8422e82f27a?q=80&w=1200&auto=format&fit=crop', 'https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?q=80&w=1200&auto=format&fit=crop', 1),
+-- 2 Park Paulista
+('https://picsum.photos/seed/parkfacil2a/1200/800', 'https://picsum.photos/seed/parkfacil2a/1200/800', 2),
+('https://picsum.photos/seed/parkfacil2b/1200/800', 'https://picsum.photos/seed/parkfacil2a/1200/800', 2),
+('https://picsum.photos/seed/parkfacil2c/1200/800', 'https://picsum.photos/seed/parkfacil2a/1200/800', 2),
+-- 3 Vaga Certa Vila Mariana
+('https://picsum.photos/seed/parkfacil3a/1200/800', 'https://picsum.photos/seed/parkfacil3a/1200/800', 3),
+('https://picsum.photos/seed/parkfacil3b/1200/800', 'https://picsum.photos/seed/parkfacil3a/1200/800', 3),
+('https://picsum.photos/seed/parkfacil3c/1200/800', 'https://picsum.photos/seed/parkfacil3a/1200/800', 3),
+-- 4 Garagem Pinheiros
+('https://picsum.photos/seed/parkfacil4a/1200/800', 'https://picsum.photos/seed/parkfacil4a/1200/800', 4),
+('https://picsum.photos/seed/parkfacil4b/1200/800', 'https://picsum.photos/seed/parkfacil4a/1200/800', 4),
+('https://picsum.photos/seed/parkfacil4c/1200/800', 'https://picsum.photos/seed/parkfacil4a/1200/800', 4),
+-- 5 Park Liberdade
+('https://picsum.photos/seed/parkfacil5a/1200/800', 'https://picsum.photos/seed/parkfacil5a/1200/800', 5),
+('https://picsum.photos/seed/parkfacil5b/1200/800', 'https://picsum.photos/seed/parkfacil5a/1200/800', 5),
+('https://picsum.photos/seed/parkfacil5c/1200/800', 'https://picsum.photos/seed/parkfacil5a/1200/800', 5),
+-- 6 Estacionamento Brás Seguro
+('https://picsum.photos/seed/parkfacil6a/1200/800', 'https://picsum.photos/seed/parkfacil6a/1200/800', 6),
+('https://picsum.photos/seed/parkfacil6b/1200/800', 'https://picsum.photos/seed/parkfacil6a/1200/800', 6),
+('https://picsum.photos/seed/parkfacil6c/1200/800', 'https://picsum.photos/seed/parkfacil6a/1200/800', 6),
+-- 7 Mooca Park
+('https://picsum.photos/seed/parkfacil7a/1200/800', 'https://picsum.photos/seed/parkfacil7a/1200/800', 7),
+('https://picsum.photos/seed/parkfacil7b/1200/800', 'https://picsum.photos/seed/parkfacil7a/1200/800', 7),
+('https://picsum.photos/seed/parkfacil7c/1200/800', 'https://picsum.photos/seed/parkfacil7a/1200/800', 7),
+-- 8 Itaim Parking
+('https://picsum.photos/seed/parkfacil8a/1200/800', 'https://picsum.photos/seed/parkfacil8a/1200/800', 8),
+('https://picsum.photos/seed/parkfacil8b/1200/800', 'https://picsum.photos/seed/parkfacil8a/1200/800', 8),
+('https://picsum.photos/seed/parkfacil8c/1200/800', 'https://picsum.photos/seed/parkfacil8a/1200/800', 8),
+-- 9 Tatuapé Vagas
+('https://picsum.photos/seed/parkfacil9a/1200/800', 'https://picsum.photos/seed/parkfacil9a/1200/800', 9),
+('https://picsum.photos/seed/parkfacil9b/1200/800', 'https://picsum.photos/seed/parkfacil9a/1200/800', 9),
+('https://picsum.photos/seed/parkfacil9c/1200/800', 'https://picsum.photos/seed/parkfacil9a/1200/800', 9),
+-- 10 Santana Park
+('https://picsum.photos/seed/parkfacil10a/1200/800', 'https://picsum.photos/seed/parkfacil10a/1200/800', 10),
+('https://picsum.photos/seed/parkfacil10b/1200/800', 'https://picsum.photos/seed/parkfacil10a/1200/800', 10),
+('https://picsum.photos/seed/parkfacil10c/1200/800', 'https://picsum.photos/seed/parkfacil10a/1200/800', 10),
+-- 11 Lapa Garagem
+('https://picsum.photos/seed/parkfacil11a/1200/800', 'https://picsum.photos/seed/parkfacil11a/1200/800', 11),
+('https://picsum.photos/seed/parkfacil11b/1200/800', 'https://picsum.photos/seed/parkfacil11a/1200/800', 11),
+('https://picsum.photos/seed/parkfacil11c/1200/800', 'https://picsum.photos/seed/parkfacil11a/1200/800', 11),
+-- 12 Consolação Park
+('https://picsum.photos/seed/parkfacil12a/1200/800', 'https://picsum.photos/seed/parkfacil12a/1200/800', 12),
+('https://picsum.photos/seed/parkfacil12b/1200/800', 'https://picsum.photos/seed/parkfacil12a/1200/800', 12),
+('https://picsum.photos/seed/parkfacil12c/1200/800', 'https://picsum.photos/seed/parkfacil12a/1200/800', 12),
+-- 13 Ipiranga Estaciona
+('https://picsum.photos/seed/parkfacil13a/1200/800', 'https://picsum.photos/seed/parkfacil13a/1200/800', 13),
+('https://picsum.photos/seed/parkfacil13b/1200/800', 'https://picsum.photos/seed/parkfacil13a/1200/800', 13),
+('https://picsum.photos/seed/parkfacil13c/1200/800', 'https://picsum.photos/seed/parkfacil13a/1200/800', 13),
+-- 14 Morumbi Premium Park
+('https://picsum.photos/seed/parkfacil14a/1200/800', 'https://picsum.photos/seed/parkfacil14a/1200/800', 14),
+('https://picsum.photos/seed/parkfacil14b/1200/800', 'https://picsum.photos/seed/parkfacil14a/1200/800', 14),
+('https://picsum.photos/seed/parkfacil14c/1200/800', 'https://picsum.photos/seed/parkfacil14a/1200/800', 14),
+-- 15 Butantã Vagas
+('https://picsum.photos/seed/parkfacil15a/1200/800', 'https://picsum.photos/seed/parkfacil15a/1200/800', 15),
+('https://picsum.photos/seed/parkfacil15b/1200/800', 'https://picsum.photos/seed/parkfacil15a/1200/800', 15),
+('https://picsum.photos/seed/parkfacil15c/1200/800', 'https://picsum.photos/seed/parkfacil15a/1200/800', 15),
+-- 16 Santo Amaro Park
+('https://picsum.photos/seed/parkfacil16a/1200/800', 'https://picsum.photos/seed/parkfacil16a/1200/800', 16),
+('https://picsum.photos/seed/parkfacil16b/1200/800', 'https://picsum.photos/seed/parkfacil16a/1200/800', 16),
+('https://picsum.photos/seed/parkfacil16c/1200/800', 'https://picsum.photos/seed/parkfacil16a/1200/800', 16),
+-- 17 Barra Funda Garagem
+('https://picsum.photos/seed/parkfacil17a/1200/800', 'https://picsum.photos/seed/parkfacil17a/1200/800', 17),
+('https://picsum.photos/seed/parkfacil17b/1200/800', 'https://picsum.photos/seed/parkfacil17a/1200/800', 17),
+('https://picsum.photos/seed/parkfacil17c/1200/800', 'https://picsum.photos/seed/parkfacil17a/1200/800', 17),
+-- 18 Vila Madalena Park
+('https://picsum.photos/seed/parkfacil18a/1200/800', 'https://picsum.photos/seed/parkfacil18a/1200/800', 18),
+('https://picsum.photos/seed/parkfacil18b/1200/800', 'https://picsum.photos/seed/parkfacil18a/1200/800', 18),
+('https://picsum.photos/seed/parkfacil18c/1200/800', 'https://picsum.photos/seed/parkfacil18a/1200/800', 18),
+-- 19 Jabaquara Estacionamento
+('https://picsum.photos/seed/parkfacil19a/1200/800', 'https://picsum.photos/seed/parkfacil19a/1200/800', 19),
+('https://picsum.photos/seed/parkfacil19b/1200/800', 'https://picsum.photos/seed/parkfacil19a/1200/800', 19),
+('https://picsum.photos/seed/parkfacil19c/1200/800', 'https://picsum.photos/seed/parkfacil19a/1200/800', 19),
+-- 20 Penha Park
+('https://picsum.photos/seed/parkfacil20a/1200/800', 'https://picsum.photos/seed/parkfacil20a/1200/800', 20),
+('https://picsum.photos/seed/parkfacil20b/1200/800', 'https://picsum.photos/seed/parkfacil20a/1200/800', 20),
+('https://picsum.photos/seed/parkfacil20c/1200/800', 'https://picsum.photos/seed/parkfacil20a/1200/800', 20);

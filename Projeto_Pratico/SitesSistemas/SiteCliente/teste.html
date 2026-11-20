@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="conteudo">
+        <div class="destaque">
+            <img src="img/boneco.png" alt="">
+            <h1>Meus Dados</h1>
+        </div>
+         <div class="meus">
+            <div class="tipo">
+                <h1>Nome Completo</h1>
+                <h1>${usuario.NomeUsuario}</h1>
+            </div>
+            <div class="tipo">
+                <h1>E-mail</h1>
+                <h1>${usuario.email}</h1>
+            </div>
+            <div class="tipo">
+                <h1>Telefone</h1>
+                <h1>${usuario.telefone}</h1>
+            </div>
+            <div class="tipo">
+                <h1>CPF</h1>
+                <h1>${usuario.cpf}</h1>
+            </div>
+            <div class="tipo" style="">
+                <h1>Endereço</h1>
+                <h1>${usuario.endereco}-${usuario.cep}</h1>
+            </div>
+         </div>
+    </div>
+</body>
+</html>

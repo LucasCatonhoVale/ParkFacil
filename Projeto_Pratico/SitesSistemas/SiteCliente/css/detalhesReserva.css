@@ -1,0 +1,415 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*cabecario*/
+header{
+    width: 100%;
+    height: 100px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+#logo{
+    width: 100px;
+    height: 100px;
+}
+#ImgLogo{
+    height: 300px;
+    margin-top: -100px;
+    margin-left: -25px ;
+}
+#menu nav{
+    position: absolute;
+    margin-left: 600px;
+    width: 700px;
+    height: 100px;
+    margin-top: -120px;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid transparent;
+    list-style: none;
+    display: flex;
+}
+nav li a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+nav a:hover{
+    text-decoration:underline;
+    opacity: 0.7;
+    font-size: 20px;
+}
+#sla{
+    width: 100px;
+    height: 40px;
+    background: #1e88e5;
+    color: aliceblue;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    margin-left: -10px;
+   
+}
+#sla a{
+    display: inline-block;
+    margin-top: 7px;
+}
+#sla a:hover{
+    opacity: 0.7;
+    
+}
+#comeco{
+    width: 1200px;
+    height: 100px;
+    margin: 20px auto;
+    padding: 20px 35px;
+    border: 1px solid #dce4ef;
+    border-radius: 15px;
+    background-image:
+        linear-gradient(
+            to right,
+            #071e3bfa 0%,
+            rgba(7, 30, 59, 0.90) 40%,
+            rgba(7, 30, 59, 0.60) 70%,
+            rgba(7, 30, 59, 0.15) 100%
+        ),
+        url("../img/fundo1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+#comeco img{
+    width: 80px;
+    margin-top: -17px;
+    float: left;
+}
+#comeco h1, #comeco h2{
+    font-family: 'Poppins', sans-serif;
+     font-size: 25px;
+     margin-left: 10px;
+     color: antiquewhite;
+     margin-top: -5px;
+     margin-left: 80px;
+}
+#comeco h2{
+    margin-top: 0px;
+    font-size: 15px;
+}
+/*dados estacionamento*/
+#estacionamento{
+    width: 800px;
+    margin-top:0px;
+    height: 350px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    margin-left: 40px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    float: left;
+}
+#cage{
+    width: 250px;
+    border: 1px solid transparent;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 15px;
+    float: left;
+}
+#NomeEndereco{
+    width: 500px;
+    height: auto;
+    border: 1px solid transparent;
+    margin-top:20px ;
+    margin-left: 10px;
+    float: left;
+}
+#NomeEndereco h1, #NomeEndereco h2{
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+}
+#NomeEndereco h2{
+    font-size: 18px;
+    color: #C0C0C0;
+}
+.selo{
+    margin-top: 15px;
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    float: left;
+    margin-left: 10px;
+    border: 1px solid transparent;
+    background:#00FF7F;
+     color: #008000;
+}
+.selo h1{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    text-align: center;
+}
+.linhas{
+    width: 500px;
+    height: 1px;
+    border: 1px solid #C0C0C0;
+    float: left;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.c{
+    width: 800px;
+    height: 120px;
+    border: 1px solid transparent;
+    margin-top: 200px;
+
+}
+.elementos{
+    width: 250px;
+    height: 120px;
+    border: 1px solid transparent;
+    float: left;
+    margin-left: 10px;
+}
+.elementos img{
+    width: 80px;
+    float: left;
+    margin-left: -15px;
+}
+.elementos h1,.elementos h2{
+     font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #1e88e5;
+    margin-top: 15px;
+    margin-left: -20px;
+    float: left;
+}
+.elementos h2{
+
+    float: none;
+    font-size: 20px;
+    margin-top: 20px;
+    color: black;
+}
+.elementos h4{
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    margin-left: 50px;
+}
+.linha{
+    width: 1px;
+    height: 110px;
+    border: 1px solid  #C0C0C0;
+    float:left ;
+}
+/*qrcode*/
+#qrCode{
+    width: 400px;
+    height: 300px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    margin-top: 50px;
+    margin-left: 900px;
+}   
+#code{
+    width: 400px;
+    height: 50px;
+    background: #071e3bfa;
+    border: 1px solid transparent;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+#code img{
+    width: 40px;
+    margin-top: 7px;
+    margin-left: 10px;
+    float: left;
+}
+#code h1{
+     font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: #fff;
+    margin-top: 8px;
+    margin-left: 20px;
+    float: left;
+}
+#qrCode > img {
+    display: block;
+    margin-top:15px;
+    margin-left: 120px;        /* centraliza */
+    padding: 10px;           /* respiro branco em volta, ajuda na leitura */
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+#qrCode h2{
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 15px;
+    color: black;
+}
+#Dados{
+    width: 800px;
+    height: 120px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    margin-left: 40px;
+    margin-top: 80px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.CarroPagamento{
+    width: 380px;
+    height: 120px;
+    border: 1px solid transparent;
+    float: left;
+    margin-left: 10px;
+}
+.inicio{
+    width: 380px;
+    height: 40px;
+    border: 1px solid transparent;
+}
+.inicio img{
+    width: 50px;
+    float: left;
+}
+.inicio h1{
+      font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    color: #1e88e5;
+}
+#carro{
+    width: 380px;
+    height: 80px;
+    border: 1px solid transparent;
+}
+#carro img{
+    width: 100px;
+    float: left;
+    margin-left: -60px;
+}
+#carro h1{
+          font-family: 'Poppins', sans-serif;
+           font-size: 18px;
+           margin-top: 10px;
+}
+#carro h2{
+     font-family: 'Poppins', sans-serif;
+           font-size: 12px;
+}
+#acao{
+    width: 400px;
+    height: 180px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    float: left;
+    margin-left: 80px;
+    margin-top: -180px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.algo{
+    width: 400px;
+    height: 50px;
+    background: #071e3bfa;
+     border: 1px solid transparent;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.algo img{
+    width: 40px;
+    float: left;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+.algo h1{
+         font-family: 'Poppins', sans-serif;
+           font-size: 25px;
+           margin-top:5px ;
+           color: #fff;
+}
+.btEstilo {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 16px;        /* era 12px 16px */
+    margin-bottom: 12px;
+    border: 2px solid #1e4fa8;
+    border-radius: 10px;
+    background: #1e4fa8;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#acao .btEstilo img {
+    width: 24px;              /* era 40px */
+    height: 24px;             /* era 38px */
+    min-width: 24px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+.btSecundario {
+    background: #fff;
+    color: #1e4fa8;
+}
+
+/* ACRESCENTADO: ícone azul no botão secundário */
+#acao .btSecundario img {
+    filter: brightness(0) saturate(100%) invert(22%) sepia(80%) saturate(1800%) hue-rotate(205deg) brightness(90%);
+}
+
+/*alertas*/
+.alerta {
+
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    z-index: 9999;
+
+    background-color: #1e88e5;
+
+    color: #000;
+
+    padding: 12px 20px;
+
+    border-radius: 6px;
+
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+    opacity: 0;
+
+    transform: translateY(-20px);
+
+    transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+
+    pointer-events: none;
+
+    font-weight: 600;
+}
+
+.alerta.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.alerta.erro {
+
+    background-color: #ff4c4c;
+
+    color: white;
+}
+
+
+

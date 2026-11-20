@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../SiteCliente/css/cadastro.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="icon" type="image/png"
+        href="../SiteCliente/img/logoremov.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <title>ParkFacil</title>
+
+</head>
+
+<body>
+
+    <div class="branco">
+        <img src="../SiteCliente/img/logo.png" alt="logo">
+    </div>
+
+    <div class="fundo">
+        <a id="voltar" href="../SiteCliente/index.html">Voltar</a>
+    </div>
+
+    <div class="formulario">
+
+        <form id="cadastroForm">
+
+            <h1>Crie sua conta</h1>
+
+            <p>
+                Preencha os dados abaixo para começar
+                <br> a usar o ParkFacil.
+            </p>
+
+            <!-- NOME -->
+            <div class="for01">
+
+                <label for="name" id="name1">Nome completo</label>
+                <br>
+
+                <input type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Diga o seu nome completo"
+                    autocomplete="name"
+                    required>
+
+            </div>
+
+            <!-- EMAIL -->
+            <div class="for01">
+
+                <label for="email" id="email1">E-mail</label>
+                <br>
+
+                <input type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Me informe o seu E-mail"
+                    autocomplete="email"
+                    required>
+
+            </div>
+
+            <!-- CPF -->
+            <div class="for01">
+
+                <label for="cpf" id="cpf1">CPF</label>
+                <br>
+
+                <input type="text"
+                    id="cpf"
+                    name="cpf"
+                    placeholder="Me informe o seu CPF"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    maxlength="14"
+                    required>
+
+            </div>
+
+            <!-- TELEFONE -->
+            <div class="for01">
+
+                <label for="telefone" id="telefone1">Telefone</label>
+                <br>
+
+                <input type="tel"
+                    id="telefone"
+                    name="telefone"
+                    placeholder="(11) 99999-9999"
+                    maxlength="15"
+                    autocomplete="tel"
+                    required>
+
+            </div>
+
+            <!-- SENHA -->
+            <div class="for01" id="campoSenha">
+
+                <label for="senha" id="Senha1">Senha</label>
+                <br>
+
+                <input type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="Digite sua senha"
+                    autocomplete="new-password"
+                    required>
+
+            </div>
+
+            <!-- CONFIRMAR SENHA -->
+            <div class="for01" id="campoConfSenha">
+
+                <label for="confSenha" id="confSenha1">
+                    Confirmar senha
+                </label>
+                <br>
+
+                <input type="password"
+                    id="confSenha"
+                    name="confSenha"
+                    placeholder="Confirme sua senha"
+                    autocomplete="new-password"
+                    required>
+
+            </div>
+
+            <!-- BOTÃO CADASTRAR -->
+            <button type="submit" id="ent">
+                Cadastrar
+            </button>
+
+            <p id="cad">
+                Já tem conta?
+                <a href="../SiteCliente/loging.html">Login</a>
+            </p>
+
+        </form>
+
+    </div>
+
+    
+    <div id="alerta" hidden role="alert">
+        <p id="mensagemAlerta"></p>
+    </div>
+
+    <script src="../SiteCliente/js/cadastra.js"></script>
+
+</body>
+</html>
